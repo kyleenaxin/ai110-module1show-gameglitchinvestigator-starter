@@ -101,7 +101,8 @@ with st.form("guess_form", border=False):
 
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    # FIX: use low and high from the current difficulty instead of hardcoded 1-100
+    st.session_state.secret = random.randint(low, high)
     # FIX: reset score, status, and history so they don't carry over from the previous game
     st.session_state.score = 0
     st.session_state.status = "playing"
