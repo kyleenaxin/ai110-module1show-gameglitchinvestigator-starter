@@ -60,7 +60,8 @@ if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    # FIX: start at 0 to match the New Game reset and give the correct number of attempts
+    st.session_state.attempts = 0
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -118,8 +119,6 @@ if st.session_state.status != "playing":
     st.stop()
 
 if submit:
-    st.session_state.attempts += 1
-
     ok, guess_int, err = parse_guess(raw_guess)
 
     if not ok:
@@ -132,6 +131,8 @@ if submit:
         if guess_int < low or guess_int > high:
             st.error(f"Out of range! Please guess a number between {low} and {high}.")
         else:
+            # FIX: only count valid in-range guesses as attempts so bad input doesn't waste turns
+            st.session_state.attempts += 1
             # FIX: always pass the integer secret so check_guess comparison works correctly on every attempt
             outcome, message = check_guess(guess_int, st.session_state.secret)
 
