@@ -155,11 +155,8 @@ if submit:
             else:
                 if st.session_state.attempts >= attempt_limit:
                     st.session_state.status = "lost"
-                    st.error(
-                        f"Out of attempts! "
-                        f"The secret was {st.session_state.secret}. "
-                        f"Score: {st.session_state.score}"
-                    )
+                    # FIX: rerun so the page re-renders with the updated attempt count (shows 0, not 1)
+                    st.rerun()
 
 st.divider()
 st.caption("Built by an AI that claims this code is production-ready.")
