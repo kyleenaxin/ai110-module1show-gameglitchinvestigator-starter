@@ -91,7 +91,9 @@ with st.form("guess_form"):
         "Enter your guess:",
         key=f"guess_input_{difficulty}"
     )
-    submit = st.form_submit_button("Submit Guess 🚀")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        submit = st.form_submit_button("Submit Guess 🚀")
 
 col1, col2 = st.columns(2)
 with col1:
