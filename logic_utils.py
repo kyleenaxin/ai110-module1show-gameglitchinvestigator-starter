@@ -22,20 +22,21 @@ def parse_guess(raw: str):
 
     return True, value, None
 
-
+# FIX: claude identified which function was causing the issue, and I debugged it
 def check_guess(guess, secret):
     """
     Compare guess to secret and return (outcome, message).
 
     outcome examples: "Win", "Too High", "Too Low"
     """
+    # FIX: now returns (outcome, message) tuple to match docstring and call site in app.py
     if guess == secret:
-        return "Win", "🎉 Correct!"
+        return "Win", "Correct!"
 
     if guess > secret:
-        return "Too High", "📉 Go LOWER!"
+        return "Too High", "Too high! Try a lower number."
     else:
-        return "Too Low", "📈 Go HIGHER!"
+        return "Too Low", "Too low! Try a higher number."
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
