@@ -25,29 +25,56 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [X] Describe the game's purpose.
+- [X] Detail which bugs you found.
+- [X] Explain what fixes you applied.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User selects "easy" mode
+2. User guesses a number between 1 and 20, they choose 15
+3. Game compares to actual number, and responds accordingly "Too high!"
+4. The user continues to guess and receive feedback
+5. The game either ends because user ran out of guesses, or because they won the game!
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
-```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
-```
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.0.3, pluggy-1.5.0 -- C:\Users\Kyleena Xin\Miniconda3\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Kyleena Xin\codepath\ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.11.0
+collecting ... collected 23 items
+
+tests/test_game_logic.py::test_winning_guess PASSED                      [  4%]
+tests/test_game_logic.py::test_guess_too_high PASSED                     [  8%]
+tests/test_game_logic.py::test_guess_too_low PASSED                      [ 13%]
+tests/test_game_logic.py::test_guess_exactly_at_boundary_low PASSED      [ 17%]
+tests/test_game_logic.py::test_guess_exactly_at_boundary_high PASSED     [ 21%]
+tests/test_game_logic.py::test_parse_guess_valid_integer PASSED          [ 26%]
+tests/test_game_logic.py::test_parse_guess_none_input PASSED             [ 30%]
+tests/test_game_logic.py::test_parse_guess_empty_string PASSED           [ 34%]
+tests/test_game_logic.py::test_parse_guess_non_numeric PASSED            [ 39%]
+tests/test_game_logic.py::test_parse_guess_float_string PASSED           [ 43%]
+tests/test_game_logic.py::test_parse_guess_whitespace_only PASSED        [ 47%]
+tests/test_game_logic.py::test_parse_guess_negative_number PASSED        [ 52%]
+tests/test_game_logic.py::test_range_easy PASSED                         [ 56%]
+tests/test_game_logic.py::test_range_normal PASSED                       [ 60%]
+tests/test_game_logic.py::test_range_hard PASSED                         [ 65%]
+tests/test_game_logic.py::test_hard_range_wider_than_normal PASSED       [ 69%]
+tests/test_game_logic.py::test_normal_range_wider_than_easy PASSED       [ 73%]
+tests/test_game_logic.py::test_win_early_gives_high_score PASSED         [ 78%]
+tests/test_game_logic.py::test_win_score_has_floor PASSED                [ 82%]
+tests/test_game_logic.py::test_too_high_deducts_points PASSED            [ 86%]
+tests/test_game_logic.py::test_too_low_deducts_points PASSED             [ 91%]
+tests/test_game_logic.py::test_too_high_and_too_low_deduct_same PASSED   [ 95%]
+tests/test_game_logic.py::test_unknown_outcome_does_not_change_score PASSED [100%]
+
+============================= 23 passed in 0.06s ==============================
 
 ## 🚀 Stretch Features
 
